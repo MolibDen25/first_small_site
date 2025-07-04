@@ -13,6 +13,14 @@
         window.location.href = "login.html";
         return;
       }
+
+      if (isLoggedIn === "true") {
+      const name = localStorage.getItem("userName") || "Користувач";
+      container.innerHTML = `
+        <img src="avatar.jpg" alt="avatar" class="rounded-circle me-2" width="32" height="32">
+        <span>${name}</span>
+      `;
+      }
   
       document.getElementById("name").textContent = localStorage.getItem("userName") || "Безіменний";
       document.getElementById("login").textContent = localStorage.getItem("userLogin");
@@ -20,7 +28,20 @@
     });
 </script>
 <body>
-<div class="container mt-5">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+    <a class="navbar-brand" href="#">🌐 МійСайт</a>
+    <div class="ms-auto">
+      <!-- Замінити на умовне відображення -->
+      <a href="login.html" class="btn btn-outline-primary me-2">Вхід</a>
+      <a href="register.html" class="btn btn-primary">Реєстрація</a>
+      <!-- або -->
+      <!--
+      <img src="avatar.jpg" alt="avatar" class="rounded-circle me-2" width="32" height="32">
+      <span>Імʼя Користувача</span>
+      -->
+    </div>
+  </nav>
+  <div class="container mt-5">
   <div class="text-center">
     <img src="avatar.jpg" alt="avatar" class="rounded-circle mb-3" width="120" height="120">
     <h3 id="name">Імʼя Користувача</h3>
