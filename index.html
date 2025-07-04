@@ -14,15 +14,17 @@
     if (isLoggedIn === "true") {
       const name = localStorage.getItem("userName") || "Користувач";
       container.innerHTML = `
-        <img src="avatar.jpg" alt="avatar" class="rounded-circle me-2" width="32" height="32">
-        <span>${name}</span>
+        <a href="profile.html" class="d-flex align-items-center text-decoration-none text-dark">
+          <img src="avatar.jpg" alt="avatar" class="rounded-circle me-2" width="32" height="32">
+          <span>${name}</span>
+        </a>
       `;
     }
   });
 </script>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
-  <a class="navbar-brand" href="#">🌐 МійСайт</a>
+  <a class="navbar-brand" href="index.html">🌐 МійСайт</a>
   <div class="ms-auto">
     <!-- Замінити на умовне відображення -->
     <a href="login.html" class="btn btn-outline-primary me-2">Вхід</a>
