@@ -54,13 +54,39 @@
   }
 
   function logout() {
-    localStorage.setItem("isLoggedIn", "false");
+    localStorage.clear();
     window.location.href = "index.html";
   }
 
   function logoutAndDelete() {
-    localStorage.clear();
-    window.location.href = "index.html";
+    const login = localStorage.getItem("userLogin");
+
+    if (!login) {
+      alert("Помилка: логін не знайдено.");
+      return;
+    }
+
+    fetch("/api/deleteUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ login })
+    })
+    .then(res => res.json())
+    .then(result => {
+      if (result.success) {
+        localStorage.clear();
+        alert("Профіль видалено.");
+        window.location.href = "index.html";
+      } else {
+        alert("Помилка видалення: " + (result.error || "невідомо"));
+      }
+    })
+    .catch(err => {
+      console.error("Помилка з'єднання:", err);
+      alert("Помилка сервера");
+    });
   }
 </script>
 
