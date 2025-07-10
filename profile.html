@@ -16,17 +16,6 @@
       return;
     }
 
-    const container = document.querySelector(".ms-auto");
-    if (container) {
-      const name = localStorage.getItem("userName") || "Користувач";
-      container.innerHTML = `
-        <a href="profile.html" class="d-flex align-items-center text-decoration-none text-dark">
-          <img src="avatar.jpg" alt="avatar" class="rounded-circle me-2" width="32" height="32">
-          <span>${name}</span>
-        </a>
-      `;
-    }
-
     document.getElementById("name").textContent = localStorage.getItem("userName") || "Безіменний";
     document.getElementById("login").textContent = localStorage.getItem("userLogin");
     document.getElementById("password").textContent = localStorage.getItem("userPassword");
@@ -91,14 +80,17 @@
 </script>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
-    <a class="navbar-brand" href="index.html">🌐 МійСайт</a> <!-- ← тепер веде на головну -->
-    <div class="ms-auto">
-      <!-- Заміна кнопок буде виконуватись скриптом -->
-      <a href="login.html" class="btn btn-outline-primary me-2">Вхід</a>
-      <a href="register.html" class="btn btn-primary">Реєстрація</a>
-    </div>
-  </nav>
+  <div id="header-placeholder"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("header.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("header-placeholder").innerHTML = data;
+        });
+    });
+  </script>
 
   <div class="container mt-5">
     <div class="row">
