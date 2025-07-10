@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      { "source": "/", "destination": "/pages/main.html" },
+      { "source": "/login", "destination": "/pages/login.html" },
+      { "source": "/register", "destination": "/pages/register.html" },
+      { "source": "/profile", "destination": "/pages/profile.html" }
+    ]
+  }
+  
