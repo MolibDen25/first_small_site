@@ -1,3 +1,5 @@
+// js/header.js
+
 document.addEventListener("DOMContentLoaded", async () => {
     const headerPlaceholder = document.getElementById("header-placeholder");
   
