@@ -5,17 +5,18 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вхід</title>
+    <title>Реєстрація</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const loginBtn = document.getElementById("login-btn");
+      const registerBtn = document.getElementById("register-btn");
 
-      loginBtn.addEventListener("click", async function () {
+      registerBtn.addEventListener("click", async function () {
         const login = document.getElementById("login").value.trim();
         const password = document.getElementById("password").value.trim();
+        const username = "Новий Користувач"; // або можна зробити додаткове поле
 
         if (!login || !password) {
           alert("Заповніть всі поля");
@@ -23,30 +24,29 @@
         }
 
         try {
-          const response = await fetch("/api/login", {
+          const response = await fetch("/api/register", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({ login, password })
+            body: JSON.stringify({
+              username,
+              login,
+              password
+            })
           });
 
           const result = await response.json();
 
           if (response.ok && result.user) {
-            localStorage.setItem("isLoggedIn", "true");
-            localStorage.setItem("userName", result.user.username);
-            localStorage.setItem("userLogin", result.user.login);
-            localStorage.setItem("userPassword", result.user.password);
-            localStorage.setItem("avatar", result.user.avatar_url);
-            alert("Успішний вхід!");
-            window.location.href = "profile.html";
+            alert("Реєстрація успішна! Тепер увійдіть.");
+            window.location.href = "login.html";
           } else {
-            alert("Помилка: " + (result.error || "Невірні дані"));
+            alert("Помилка реєстрації: " + (result.error || "невідома помилка"));
           }
         } catch (err) {
           console.error(err);
-          alert("Помилка з'єднання з сервером");
+          alert("Помилка з'єднання з сервером.");
         }
       });
     });
@@ -54,21 +54,21 @@
 
   <body>
     <div id="header-placeholder"></div>
-    <script src="js/header.js"></script>
+    <script src="../js/header.js"></script>
 
     <div class="d-flex vh-100 justify-content-center align-items-center">
       <div class="border p-4 rounded shadow" style="min-width: 300px; max-width: 400px; width: 100%;">
-        <h3 class="text-center">Вхід</h3>
+        <h3 class="text-center">Реєстрація</h3>
         <hr>
         <label for="login" class="form-label">Логін</label>
         <input type="text" class="form-control mb-3" id="login">
         <label for="password" class="form-label">Пароль</label>
         <input type="password" class="form-control mb-3" id="password">
-        <button class="btn btn-primary w-100" id="login-btn">Увійти</button>
+        <button class="btn btn-primary w-100" id="register-btn">Зареєструватися</button>
         <hr>
         <div class="text-center mb-2">або</div>
-        <button class="btn btn-danger w-100 mb-2">Вхід через Google</button>
-        <button class="btn btn-dark w-100">Вхід через GitHub</button>
+        <button class="btn btn-danger w-100 mb-2">Зареєструватися через Google</button>
+        <button class="btn btn-dark w-100">Зареєструватися через GitHub</button>
       </div>
     </div>
   </body>
