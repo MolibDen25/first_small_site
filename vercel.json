@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+      { "source": "/", "destination": "/pages/main.html" },
+      { "source": "/login", "destination": "/pages/login.html" },
+      { "source": "/register", "destination": "/pages/register.html" },
+      { "source": "/profile", "destination": "/pages/profile.html" },
+      { "source": "/header", "destination": "/components/header.html" },
+      { "source": "/default_avatar", "destination": "/assets/avatars/default.png" },
+      { "source": "/edit", "destination": "/assets/img/edit.png" }
+    ]
+  }
+  
