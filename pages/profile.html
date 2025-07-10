@@ -15,7 +15,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       const isLoggedIn = localStorage.getItem("isLoggedIn");
       if (isLoggedIn !== "true") {
-        window.location.href = "login.html";
+        window.location.href = "/login";
         return;
       }
 
@@ -47,7 +47,7 @@
 
     function logout() {
       localStorage.clear();
-      window.location.href = "index.html";
+      window.location.href = "/";
     }
 
     function logoutAndDelete() {
@@ -70,7 +70,7 @@
         if (result.success) {
           localStorage.clear();
           alert("Профіль видалено.");
-          window.location.href = "index.html";
+          window.location.href = "/";
         } else {
           alert("Помилка видалення: " + (result.error || "невідомо"));
         }
