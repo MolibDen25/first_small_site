@@ -11,17 +11,7 @@
 
   <body>
     <div id="header-placeholder"></div>
-    <script src="header.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        fetch("header.html")
-          .then(res => res.text())
-          .then(data => {
-            document.getElementById("header-placeholder").innerHTML = data;
-          });
-      });
-    </script>
+    <script src="api/header.js"></script>
 
     <div class="container mt-5 text-center">
       <h1>Ласкаво просимо на сайт!</h1>
