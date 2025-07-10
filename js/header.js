@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const name = localStorage.getItem("userName") || "Користувач";
       container.innerHTML = `
         <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark">
-          <img src="/assets/avatars/default.jpg" alt="avatar" class="rounded-circle me-2" width="32" height="32">
+          <img src="/assets/avatars/default.png" alt="avatar" class="rounded-circle me-2" width="32" height="32">
           <span>${name}</span>
         </a>
       `;
